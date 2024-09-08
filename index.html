@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fascinate+Inline&family=Pixelify+Sans:wght@400..700&family=Protest+Guerrilla&display=swap" rel="stylesheet">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bienvenido</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        #bienvenido {
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            font-size: 62px;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        #footer {
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            font-size: 20px;
+        }
+        #formulario {
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            display: none;
+            flex-direction: column;
+            align-items: center;
+        }
+        .input-container {
+            font-family: "Fascinate Inline", system-ui;
+            font-weight: 400;
+            font-style: normal;
+            display: flex;
+            align-items: center;
+            margin: 10px;
+            border: 2px solid white; /* Borde del contenedor */
+            border-radius: 15px; /* Bordes redondeados */
+            padding: 5px;
+            background-color: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente */
+        }
+        input {
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            border: none; /* Sin borde en el input */
+            background-color: transparent; /* Fondo transparente */
+            color: white; /* Color del texto */
+            padding: 10px;
+            border-radius: 15px; /* Bordes redondeados */
+            width: 300px; /* Ancho del input */
+        }
+        button {
+            font-family: "Pixelify Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: <weight>;
+            font-style: normal;
+            margin-left: 10px; /* Espaciado entre input y botón */
+            padding: 10px 20px;
+            border: none; /* Sin borde en el botón */
+            border-radius: 15px; /* Bordes redondeados */
+            background-color: white; /* Fondo del botón */
+            color: black; /* Color del texto del botón */
+            cursor: pointer; /* Cambia el cursor al pasar el ratón */
+        }
+        button:hover {
+            background-color: #ddd; /* Color del botón al pasar el ratón */
+        }
+    </style>
+</head>
+<body>
+    <div id="bienvenido">Bienvenido</div>
+    <div id="footer">Hecho por Egors</div>
+
+    <div id="formulario">
+        <h1>Introduce un texto</h1>
+        <div class="input-container">
+            <input type="text" id="inputTexto" placeholder="Escribe aquí...">
+            <button onclick="redirigir()">Enviar</button>
+        </div>
+        <div id="resultado" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        // Redirigir a la página de formulario después de 3 segundos
+        setTimeout(() => {
+            document.getElementById('bienvenido').style.display = 'none';
+            document.getElementById('formulario').style.display = 'flex';
+        }, 3000);
+
+        function redirigir() {
+            const texto = document.getElementById('inputTexto').value.toLowerCase(); // Convierte a minúsculas
+            const resultadoDiv = document.getElementById('resultado');
+            let url;
+
+            // Define las redirecciones según la entrada
+            switch (texto) {
+                case 'youtube':
+                    url = 'https://www.youtube.com';
+                    break;
+                case 'google':
+                    url = 'https://www.google.com';
+                    break;
+                case 'facebook':
+                    url = 'https://www.facebook.com';
+                    break;
+                // Agrega más opciones según sea necesario
+                default:
+                    resultadoDiv.innerHTML = 'Algo ha salido mal';
+                    return;
+            }
+
+            // Redirige a la URL correspondiente
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
